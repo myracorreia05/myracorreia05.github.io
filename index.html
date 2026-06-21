@@ -419,7 +419,83 @@
     color: var(--burgundy);
   }
 
-  /* ───────── SECTION BASE ───────── */
+  /* ───────── LEDGER (By the Numbers) ───────── */
+  .ledger-section {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 70px 56px;
+    border-top: 1px solid var(--ink);
+    border-bottom: 4px double var(--burgundy);
+    position: relative; z-index: 2;
+  }
+  .ledger-head {
+    text-align: center;
+    margin-bottom: 50px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid rgba(244,235,217,0.2);
+  }
+  .ledger-eyebrow {
+    font-family: 'Special Elite', monospace;
+    font-size: 0.68rem; letter-spacing: 0.3em;
+    color: var(--gold-2); text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .ledger-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(36px, 5vw, 64px);
+    font-weight: 900; line-height: 1;
+    color: var(--paper); letter-spacing: -0.02em;
+  }
+  .ledger-title em {
+    font-style: italic;
+    color: var(--gold-2);
+  }
+  .ledger-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: rgba(244,235,217,0.15);
+    border: 1px solid rgba(244,235,217,0.15);
+  }
+  .ledger-cell {
+    background: var(--ink);
+    padding: 28px 24px;
+    transition: background 0.3s;
+    position: relative;
+  }
+  .ledger-cell:hover {
+    background: var(--ink-2);
+  }
+  .ledger-k {
+    font-family: 'Special Elite', monospace;
+    font-size: 0.58rem; letter-spacing: 0.16em;
+    color: var(--gold-2); text-transform: uppercase;
+    margin-bottom: 14px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(212,169,85,0.3);
+  }
+  .ledger-v {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(36px, 4vw, 56px);
+    font-style: italic; font-weight: 900;
+    color: var(--paper); line-height: 1;
+    letter-spacing: -0.02em;
+    margin-bottom: 14px;
+  }
+  .ledger-v span {
+    font-family: 'Cardo', serif;
+    font-style: italic; font-weight: 400;
+    font-size: 0.4em;
+    color: var(--sepia-light);
+    margin-left: 2px;
+  }
+  .ledger-note {
+    font-family: 'Cardo', serif;
+    font-style: italic;
+    font-size: 0.85rem;
+    color: rgba(244,235,217,0.7);
+    line-height: 1.5;
+  }
   section { padding: 100px 56px; position: relative; z-index: 2; }
   .section-wrap { max-width: 1300px; margin: 0 auto; }
   .sec-header {
@@ -1037,56 +1113,123 @@
     margin-top: 6px; line-height: 1.5;
   }
 
-  /* Certs */
+  /* Certs - Analyst Table */
   .certs-block {
     margin-top: 60px;
-    text-align: center;
+    text-align: left;
   }
   .certs-head {
     font-family: 'Playfair Display', serif;
     font-style: italic; font-weight: 700;
-    font-size: 1.6rem;
+    font-size: 1.8rem;
     color: var(--ink);
     margin-bottom: 8px;
     letter-spacing: -0.01em;
+    text-align: center;
   }
   .certs-sub {
     font-family: 'Cardo', serif;
     font-style: italic;
     color: var(--ink-soft);
-    margin-bottom: 30px;
+    margin-bottom: 28px;
     font-size: 0.95rem;
+    text-align: center;
   }
-  .certs-row {
-    display: flex; flex-wrap: wrap; gap: 14px; justify-content: center;
+  .certs-cats {
+    display: flex; flex-wrap: wrap; gap: 8px; justify-content: center;
+    margin-bottom: 28px;
   }
-  .cert-tag {
-    display: inline-flex; align-items: center; gap: 10px;
-    padding: 12px 22px;
+  .cert-cat {
+    font-family: 'Special Elite', monospace;
+    font-size: 0.65rem; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--ink);
+    padding: 8px 16px;
+    border: 1px solid var(--ink);
+    background: var(--paper);
+    cursor: pointer;
+    transition: all 0.3s;
+    user-select: none;
+  }
+  .cert-cat:hover, .cert-cat.active {
+    background: var(--ink); color: var(--paper);
+  }
+
+  .certs-table {
+    width: 100%;
+    border-collapse: collapse;
     background: var(--paper);
     border: 1px solid var(--ink);
-    box-shadow: 3px 3px 0 var(--ink);
-    transition: all 0.3s;
-    text-decoration: none;
-    color: var(--ink);
+    box-shadow: 4px 4px 0 var(--ink);
+    font-family: 'Cardo', serif;
   }
-  .cert-tag:hover {
-    transform: translate(-2px, -2px);
-    box-shadow: 5px 5px 0 var(--burgundy);
-    border-color: var(--burgundy);
+  .certs-table thead tr {
+    background: var(--ink);
+    color: var(--paper);
   }
-  .cert-tag-icon {
-    color: var(--burgundy);
-    font-size: 1rem;
-  }
-  .cert-tag-name {
+  .certs-table th {
     font-family: 'Special Elite', monospace;
-    font-size: 0.68rem; letter-spacing: 0.08em;
-    color: var(--ink); text-transform: uppercase;
+    font-size: 0.62rem; letter-spacing: 0.18em;
+    text-transform: uppercase; font-weight: 400;
+    padding: 14px 18px;
+    text-align: left;
+    border-bottom: 1px solid var(--ink);
   }
-  .cert-tag-arrow {
+  .certs-table tbody tr {
+    border-bottom: 1px solid var(--rule);
+    transition: background 0.3s;
+  }
+  .certs-table tbody tr:last-child { border-bottom: none; }
+  .certs-table tbody tr:hover {
+    background: var(--paper-2);
+  }
+  .certs-table tbody tr.hidden { display: none; }
+  .certs-table td {
+    padding: 14px 18px;
+    vertical-align: middle;
+    font-size: 0.95rem;
+  }
+  .ct-name {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    color: var(--ink);
+    font-size: 1.02rem;
+  }
+  .ct-issuer {
+    font-family: 'Cardo', serif;
+    font-style: italic;
     color: var(--burgundy);
-    font-size: 0.85rem;
+    font-size: 0.92rem;
+  }
+  .ct-date {
+    font-family: 'Special Elite', monospace;
+    font-size: 0.7rem;
+    color: var(--ink-soft);
+    letter-spacing: 0.06em;
+    white-space: nowrap;
+  }
+  .ct-link {
+    text-align: right;
+    white-space: nowrap;
+  }
+  .ct-link a {
+    font-family: 'Special Elite', monospace;
+    font-size: 0.65rem; letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--burgundy);
+    text-decoration: none;
+    padding: 6px 12px;
+    border: 1px solid var(--burgundy);
+    transition: all 0.3s;
+    display: inline-block;
+  }
+  .ct-link a:hover {
+    background: var(--burgundy); color: var(--paper);
+  }
+  .ct-id {
+    font-family: 'Special Elite', monospace;
+    font-size: 0.6rem;
+    color: var(--sepia);
+    letter-spacing: 0.04em;
   }
 
   /* ───────── CONTACT ───────── */
@@ -1329,6 +1472,35 @@
     .footer-grid { grid-template-columns: 1fr; text-align: center; gap: 20px; }
     .footer-socials { justify-content: center; }
     footer { padding: 28px 24px; }
+
+    /* Mobile ledger */
+    .ledger-section { padding: 60px 24px; }
+    .ledger-grid { grid-template-columns: repeat(2, 1fr); }
+    .ledger-cell { padding: 22px 18px; }
+
+    /* Mobile certs table - card-style */
+    .certs-table {
+      box-shadow: 3px 3px 0 var(--ink);
+      font-size: 0.85rem;
+    }
+    .certs-table thead { display: none; }
+    .certs-table, .certs-table tbody, .certs-table tr, .certs-table td {
+      display: block; width: 100%;
+    }
+    .certs-table tr {
+      padding: 14px 18px;
+      border-bottom: 1px solid var(--rule);
+    }
+    .certs-table td {
+      padding: 4px 0;
+      border: none;
+    }
+    .ct-name { font-size: 1rem; margin-bottom: 2px; }
+    .ct-issuer { font-size: 0.88rem; }
+    .ct-date { font-size: 0.65rem; margin-top: 4px; }
+    .ct-link { text-align: left; margin-top: 8px; }
+    .certs-cats { gap: 6px; }
+    .cert-cat { font-size: 0.58rem; padding: 6px 12px; }
   }
 </style>
 </head>
@@ -1415,7 +1587,7 @@
         <div class="hero-stat-label">MS Analytics<br>GPA</div>
       </div>
       <div class="hero-stat">
-        <div class="hero-stat-num">5</div>
+        <div class="hero-stat-num">17</div>
         <div class="hero-stat-label">Industry<br>Certifications</div>
       </div>
       <div class="hero-stat">
@@ -1428,6 +1600,58 @@
     <div class="hero-cta-row">
       <a href="#projects" class="btn-vintage">View the Work ↗</a>
       <a href="#contact" class="btn-ghost">Make Contact</a>
+    </div>
+  </div>
+</section>
+
+<!-- BY THE NUMBERS - analyst ledger -->
+<section class="ledger-section">
+  <div class="section-wrap">
+    <div class="ledger-head">
+      <div class="ledger-eyebrow">— A Brief Ledger —</div>
+      <h2 class="ledger-title">By the <em>Numbers</em></h2>
+    </div>
+    <div class="ledger-grid">
+      <div class="ledger-cell">
+        <div class="ledger-k">Reporting acceleration</div>
+        <div class="ledger-v">~30<span>%</span></div>
+        <div class="ledger-note">Pipeline turnaround reduction at Limeneal Solutions</div>
+      </div>
+      <div class="ledger-cell">
+        <div class="ledger-k">Data quality lift</div>
+        <div class="ledger-v">99<span>%</span></div>
+        <div class="ledger-note">Accuracy maintained across reporting systems</div>
+      </div>
+      <div class="ledger-cell">
+        <div class="ledger-k">Engagement uplift</div>
+        <div class="ledger-v">+40<span>%</span></div>
+        <div class="ledger-note">A/B-tested job posting performance at Genxhire</div>
+      </div>
+      <div class="ledger-cell">
+        <div class="ledger-k">Process efficiency</div>
+        <div class="ledger-v">+25<span>%</span></div>
+        <div class="ledger-note">Projected from DMAIC at Syracuse University</div>
+      </div>
+      <div class="ledger-cell">
+        <div class="ledger-k">GMV uplift modelled</div>
+        <div class="ledger-v">$17.8K</div>
+        <div class="ledger-note">DoorDash dynamic pricing simulation</div>
+      </div>
+      <div class="ledger-cell">
+        <div class="ledger-k">Production ML models</div>
+        <div class="ledger-v">R²=0.71</div>
+        <div class="ledger-note">Random Forest delivery time regression</div>
+      </div>
+      <div class="ledger-cell">
+        <div class="ledger-k">Census records analyzed</div>
+        <div class="ledger-v">28<span> states</span></div>
+        <div class="ledger-note">India Literacy Intelligence dashboard</div>
+      </div>
+      <div class="ledger-cell">
+        <div class="ledger-k">Annual savings modelled</div>
+        <div class="ledger-v">$380M</div>
+        <div class="ledger-note">Coca-Cola supply chain risk pooling analysis</div>
+      </div>
     </div>
   </div>
 </section>
@@ -1468,7 +1692,7 @@
           <span class="dropcap">B</span>ased in New York and trained in Mumbai, I hold an MS in Business Analytics from <strong>Syracuse University's Whitman School of Management</strong>, with a 3.85 GPA. My two-plus years of professional work span SQL reporting pipelines at Limeneal Solutions, Power BI executive dashboards, Python predictive models, and DMAIC process audits at Syracuse University.
         </p>
         <p class="about-body">
-          I'm a firm believer in slow, careful analysis — and faster, cleaner reporting. AWS Data Analytics certified,Microsoft Business Analysis certified, and a Google IT Automation certified.
+          I'm a firm believer in slow, careful analysis — and faster, cleaner reporting. AWS Data Analytics certified, Lean Six Sigma certified, Microsoft Business Analysis certified, and a Google IT Automation graduate.
         </p>
 
         <table class="about-meta-table">
@@ -1643,7 +1867,7 @@
           <div class="exp-loc">Syracuse, NY</div>
         </div>
         <div class="exp-main">
-          <h3 class="exp-role">Process Improvement Analyst</h3>
+          <h3 class="exp-role">Process Improvement Analystt</h3>
           <div class="exp-co">Syracuse University</div>
           <ul class="exp-bullets">
             <li>Applied <strong>DMAIC methodology</strong> to university service workflows, identifying three critical bottlenecks and designing data-driven SOPs projecting a <strong>25% operational efficiency gain</strong>.</li>
@@ -1870,11 +2094,18 @@
           <h3 class="edu-degree">MS, Business Analytics</h3>
           <div class="edu-school">Syracuse University · Whitman School of Management</div>
           <div class="edu-courses">
-            <span class="edu-course">Data Analytics</span>
-            <span class="edu-course">Statistical Modeling</span>
-            <span class="edu-course">Operations Research</span>
-            <span class="edu-course">Business Intelligence</span>
+            <span class="edu-course">Data Analysis &amp; Decision Making</span>
+            <span class="edu-course">Business Analytics</span>
+            <span class="edu-course">Intro to Data Science</span>
+            <span class="edu-course">Database Management</span>
             <span class="edu-course">Machine Learning</span>
+            <span class="edu-course">Marketing Analytics</span>
+            <span class="edu-course">Project Management</span>
+            <span class="edu-course">Lean Six Sigma</span>
+            <span class="edu-course">Information Visualisation</span>
+            <span class="edu-course">Management Science</span>
+            <span class="edu-course">Marketing Research</span>
+            <span class="edu-course">Supply Chain &amp; Logistics</span>
           </div>
         </div>
         <div class="edu-grade-block">
@@ -1923,29 +2154,130 @@
     </div>
 
     <div class="certs-block reveal">
-      <div class="certs-head">— Certifications &amp; Honors —</div>
-      <p class="certs-sub">Awarded by various institutions of repute.</p>
-      <div class="certs-row">
-        <div class="cert-tag">
-          <span class="cert-tag-icon">✦</span>
-          <span class="cert-tag-name">AWS Data Analytics</span>
-        </div>
-        </div>
-        <a href="https://coursera.org/verify/professional-cert/BL99NRDH2DOL" target="_blank" rel="noopener" class="cert-tag">
-          <span class="cert-tag-icon">✦</span>
-          <span class="cert-tag-name">Google IT Automation</span>
-          <span class="cert-tag-arrow">↗</span>
-        </a>
-        <div class="cert-tag">
-          <span class="cert-tag-icon">✦</span>
-          <span class="cert-tag-name">Google AI Essentials</span>
-        </div>
-        <a href="https://coursera.org/verify/S41EGZB7GVWR" target="_blank" rel="noopener" class="cert-tag">
-          <span class="cert-tag-icon">✦</span>
-          <span class="cert-tag-name">Microsoft Business Analysis</span>
-          <span class="cert-tag-arrow">↗</span>
-        </a>
+      <div class="certs-head">— Certifications &amp; Credentials —</div>
+      <p class="certs-sub">Seventeen credentials from leading institutions, listed in reverse chronological order.</p>
+
+      <div class="certs-cats">
+        <span class="cert-cat" data-filter="all">All · 17</span>
+        <span class="cert-cat" data-filter="ai">AI &amp; ML · 7</span>
+        <span class="cert-cat" data-filter="data">Data &amp; Analytics · 6</span>
+        <span class="cert-cat" data-filter="biz">Business &amp; Tools · 4</span>
       </div>
+
+      <table class="certs-table">
+        <thead>
+          <tr>
+            <th>Credential</th>
+            <th>Issuer</th>
+            <th>Date</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr data-cat="ai">
+            <td class="ct-name">AI Skills Fest 2026</td>
+            <td class="ct-issuer">Microsoft</td>
+            <td class="ct-date">Jun 2026</td>
+            <td class="ct-link"><a href="https://www.credly.com/badges/ce517a6c-8e95-4e19-9cb8-d13cacf2866b/linked_in_profile" target="_blank" rel="noopener">Verify ↗</a></td>
+          </tr>
+          <tr data-cat="data">
+            <td class="ct-name">Data Types &amp; Functions in Snowflake</td>
+            <td class="ct-issuer">DataCamp</td>
+            <td class="ct-date">Jun 2026</td>
+            <td class="ct-link"><a href="https://www.datacamp.com/completed/statement-of-accomplishment/course/570f7310391be34e3fddb04b5f75a0d131b56b7d" target="_blank" rel="noopener">Verify ↗</a></td>
+          </tr>
+          <tr data-cat="ai">
+            <td class="ct-name">Claude in Amazon Bedrock</td>
+            <td class="ct-issuer">Anthropic</td>
+            <td class="ct-date">Jun 2026</td>
+            <td class="ct-link"><a href="https://verify.skilljar.com/c/bmbskrcxi5uc" target="_blank" rel="noopener">Verify ↗</a></td>
+          </tr>
+          <tr data-cat="ai">
+            <td class="ct-name">Claude 101</td>
+            <td class="ct-issuer">Anthropic</td>
+            <td class="ct-date">Jun 2026</td>
+            <td class="ct-link"><a href="https://verify.skilljar.com/c/ayjs5etn8a2m" target="_blank" rel="noopener">Verify ↗</a></td>
+          </tr>
+          <tr data-cat="ai">
+            <td class="ct-name">AI Fluency Framework &amp; Foundations</td>
+            <td class="ct-issuer">Anthropic</td>
+            <td class="ct-date">Jun 2026</td>
+            <td class="ct-link"><a href="https://verify.skilljar.com/c/yss7i2dvuzqb" target="_blank" rel="noopener">Verify ↗</a></td>
+          </tr>
+          <tr data-cat="ai">
+            <td class="ct-name">ML Operations · Knowledge Badge</td>
+            <td class="ct-issuer">Databricks</td>
+            <td class="ct-date">May 2026</td>
+            <td class="ct-link"><a href="https://credentials.databricks.com/e7cc5b9a-983e-470f-8e83-5d4ef7f71d02" target="_blank" rel="noopener">Verify ↗</a></td>
+          </tr>
+          <tr data-cat="ai">
+            <td class="ct-name">Data Preparation for ML · Knowledge Badge</td>
+            <td class="ct-issuer">Databricks</td>
+            <td class="ct-date">May 2026</td>
+            <td class="ct-link"><a href="https://credentials.databricks.com/77fa9787-1534-46a7-a55c-bec4f57222e9" target="_blank" rel="noopener">Verify ↗</a></td>
+          </tr>
+          <tr data-cat="biz">
+            <td class="ct-name">Information Security</td>
+            <td class="ct-issuer">Saylor University</td>
+            <td class="ct-date">Feb 2026</td>
+            <td class="ct-link"><span class="ct-id">ID 2260306831MC</span></td>
+          </tr>
+          <tr data-cat="ai">
+            <td class="ct-name">Building with Artificial Intelligence</td>
+            <td class="ct-issuer">Saylor University</td>
+            <td class="ct-date">Feb 2026</td>
+            <td class="ct-link"><span class="ct-id">ID 0000231044MC</span></td>
+          </tr>
+          <tr data-cat="ai">
+            <td class="ct-name">Introduction to AI</td>
+            <td class="ct-issuer">Google</td>
+            <td class="ct-date">Jan 2026</td>
+            <td class="ct-link"><a href="https://www.coursera.org/account/accomplishments/records/N2DWZQ0455L3" target="_blank" rel="noopener">Verify ↗</a></td>
+          </tr>
+          <tr data-cat="data">
+            <td class="ct-name">AWS Data Analytics</td>
+            <td class="ct-issuer">Amazon Web Services</td>
+            <td class="ct-date">Jan 2026</td>
+            <td class="ct-link"><a href="https://www.coursera.org/account/accomplishments/records/JAFCJDEPP4G6" target="_blank" rel="noopener">Verify ↗</a></td>
+          </tr>
+          <tr data-cat="data">
+            <td class="ct-name">IT Automation with Python</td>
+            <td class="ct-issuer">Google</td>
+            <td class="ct-date">Aug 2025</td>
+            <td class="ct-link"><a href="https://coursera.org/share/63f8a8a67cd39ad77ccd121e824bf05a" target="_blank" rel="noopener">Verify ↗</a></td>
+          </tr>
+          <tr data-cat="biz">
+            <td class="ct-name">Business Analysis Fundamentals</td>
+            <td class="ct-issuer">Microsoft</td>
+            <td class="ct-date">Jul 2025</td>
+            <td class="ct-link"><a href="https://coursera.org/verify/S41EGZB7GVWR" target="_blank" rel="noopener">Verify ↗</a></td>
+          </tr>
+          <tr data-cat="ai">
+            <td class="ct-name">Machine Learning with Python</td>
+            <td class="ct-issuer">freeCodeCamp</td>
+            <td class="ct-date">Jun 2025</td>
+            <td class="ct-link"><a href="https://freecodecamp.org/certification/fcc-1130f92b-b7bf-4b84-be7c-6e2043e67398/machine-learning-with-python-v7" target="_blank" rel="noopener">Verify ↗</a></td>
+          </tr>
+          <tr data-cat="data">
+            <td class="ct-name">Data Analysis with Python</td>
+            <td class="ct-issuer">freeCodeCamp</td>
+            <td class="ct-date">Jul 2025</td>
+            <td class="ct-link"><a href="https://freecodecamp.org/certification/fcc-1130f92b-b7bf-4b84-be7c-6e2043e67398/data-analysis-with-python-v7" target="_blank" rel="noopener">Verify ↗</a></td>
+          </tr>
+          <tr data-cat="data">
+            <td class="ct-name">Business Analytics with Excel</td>
+            <td class="ct-issuer">Johns Hopkins · Carey Business School</td>
+            <td class="ct-date">Apr 2024</td>
+            <td class="ct-link"><a href="https://www.coursera.org/account/accomplishments/records/8575RGB8T3TQ" target="_blank" rel="noopener">Verify ↗</a></td>
+          </tr>
+          <tr data-cat="biz">
+            <td class="ct-name">Sports Analytics</td>
+            <td class="ct-issuer">Rajasthan Royals</td>
+            <td class="ct-date">Nov 2022</td>
+            <td class="ct-link"><span class="ct-id">—</span></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </section>
@@ -2089,6 +2421,25 @@
       }, 250);
     });
   }
+
+  // CERTS FILTER
+  const catBtns = document.querySelectorAll('.cert-cat');
+  const certRows = document.querySelectorAll('.certs-table tbody tr');
+  catBtns[0]?.classList.add('active');
+  catBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      catBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.dataset.filter;
+      certRows.forEach(row => {
+        if (filter === 'all' || row.dataset.cat === filter) {
+          row.classList.remove('hidden');
+        } else {
+          row.classList.add('hidden');
+        }
+      });
+    });
+  });
 
   // HAMBURGER
   document.getElementById('hamburger').addEventListener('click', () => {
