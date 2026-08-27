@@ -194,9 +194,17 @@
   @media(max-width:760px){.proj-grid{grid-template-columns:1fr;}}
   .proj-card{
     background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
-    padding:24px;display:flex;flex-direction:column;transition:border-color .15s, transform .15s;
+    overflow:hidden;display:flex;flex-direction:column;
+    transition:border-color .15s, transform .35s cubic-bezier(.4,0,.2,1), box-shadow .15s, opacity .3s ease;
   }
-  .proj-card:hover{border-color:var(--accent);transform:translateY(-2px);}
+  .proj-card.hide{opacity:0;transform:scale(0.94) translateY(8px);pointer-events:none;}
+  .proj-card:hover{border-color:var(--accent);transform:translateY(-3px);box-shadow:0 10px 24px -12px rgba(15,110,92,0.25);}
+  .proj-banner{
+    width:100%;height:172px;display:block;background:var(--ink);
+    border-bottom:1px solid var(--line);
+  }
+  .proj-banner svg{width:100%;height:100%;display:block;}
+  .proj-body{padding:22px 24px 24px;display:flex;flex-direction:column;flex-grow:1;}
   .proj-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px;}
   .proj-tag{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--accent-ink);background:var(--accent-soft);padding:4px 9px;border-radius:12px;}
   .proj-date{font-size:11.5px;color:var(--ink-faint);font-family:'IBM Plex Mono',monospace;}
@@ -221,7 +229,9 @@
     transition:all .15s;
   }
   .filter-btn.active, .filter-btn:hover{background:var(--ink);color:#fff;border-color:var(--ink);}
-  .cert-list{border-top:1px solid var(--line);}
+  .cert-list{border-top:1px solid var(--line);transition:opacity .2s ease, transform .2s ease;}
+  @keyframes rowFadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+  .cert-row{animation:rowFadeIn .35s ease backwards;}
   .cert-row{
     display:grid;grid-template-columns:1fr 160px 90px 70px;gap:12px;align-items:center;
     padding:14px 0;border-bottom:1px solid var(--line);font-size:14px;
@@ -483,9 +493,31 @@
       <p class="section-sub">A small library of analyses, dashboards, and experiments — each one built end-to-end and shipped live.</p>
     </div>
 
+    <div class="cert-filter" id="projFilter">
+      <button class="filter-btn active" data-f="all">All · 6</button>
+      <button class="filter-btn" data-f="ml">Machine Learning · 2</button>
+      <button class="filter-btn" data-f="viz">Data Viz · 2</button>
+      <button class="filter-btn" data-f="biz">Business &amp; Supply Chain · 1</button>
+      <button class="filter-btn" data-f="sports">Sports Analytics · 1</button>
+    </div>
+
     <div class="proj-grid">
 
-      <div class="proj-card featured">
+      <div class="proj-card featured" data-cat="ml">
+        <div class="proj-banner">
+          <svg viewBox="0 0 1200 344" xmlns="http://www.w3.org/2000/svg">
+            <rect width="1200" height="344" fill="#0F1B18"/>
+            <path d="M0 260 L120 230 L240 250 L360 190 L480 210 L600 150 L720 170 L840 110 L960 130 L1080 70 L1200 90" stroke="#1D9A80" stroke-width="3" fill="none" opacity="0.55"/>
+            <circle cx="180" cy="90" r="70" fill="#123A31"/>
+            <circle cx="180" cy="90" r="46" fill="none" stroke="#1D9A80" stroke-width="2" opacity="0.6"/>
+            <circle cx="180" cy="90" r="4" fill="#E8B84B"/>
+            <path d="M150 92 Q180 60 210 92 Q180 124 150 92 Z" fill="none" stroke="#E8B84B" stroke-width="2"/>
+            <text x="60" y="200" font-family="Space Grotesk, sans-serif" font-weight="700" font-size="42" fill="#FFFFFF">DoorDash</text>
+            <text x="60" y="240" font-family="Space Grotesk, sans-serif" font-weight="700" font-size="42" fill="#FFFFFF">Delivery Analytics</text>
+            <text x="60" y="272" font-family="IBM Plex Mono, monospace" font-size="15" fill="#8FD9C6">3,000 orders · 5 zones · ML pipeline</text>
+          </svg>
+        </div>
+        <div class="proj-body">
         <div class="proj-top"><span class="proj-tag">Analytics · Machine Learning</span><span class="proj-date">Feb 2026</span></div>
         <h4>DoorDash Delivery Analytics Platform</h4>
         <p>A production-grade analytics platform analyzing 3,000 delivery orders across five zones — cohort retention heatmaps, RFM segmentation, dynamic pricing models, anomaly detection, and an A/B experiment simulator.</p>
@@ -497,9 +529,28 @@
         </div>
         <div class="proj-stack"><span>Python</span><span>Scikit-Learn</span><span>Chart.js</span><span>Random Forest</span></div>
         <a class="proj-link" href="https://myracorreia05.github.io/doordash-analytics/" target="_blank" rel="noopener">Examine the project <span class="arrow">↗</span></a>
+        </div>
       </div>
 
-      <div class="proj-card">
+      <div class="proj-card" data-cat="ml">
+        <div class="proj-banner">
+          <svg viewBox="0 0 600 344" xmlns="http://www.w3.org/2000/svg">
+            <rect width="600" height="344" fill="#122024"/>
+            <circle cx="150" cy="120" r="34" fill="#1D9A80" opacity="0.85"/>
+            <circle cx="260" cy="90" r="24" fill="#E8B84B" opacity="0.85"/>
+            <circle cx="350" cy="150" r="30" fill="#4C7EF0" opacity="0.75"/>
+            <circle cx="220" cy="200" r="20" fill="#E86B4B" opacity="0.8"/>
+            <circle cx="420" cy="90" r="18" fill="#1D9A80" opacity="0.6"/>
+            <circle cx="470" cy="200" r="26" fill="#8FD9C6" opacity="0.5"/>
+            <rect x="130" y="245" width="12" height="30" rx="2" fill="#3A4A4F"/>
+            <rect x="145" y="235" width="12" height="40" rx="2" fill="#3A4A4F"/>
+            <rect x="160" y="225" width="12" height="50" rx="2" fill="#3A4A4F"/>
+            <text x="40" y="60" font-family="Space Grotesk, sans-serif" font-weight="700" font-size="28" fill="#FFFFFF">Smartphone</text>
+            <text x="40" y="90" font-family="Space Grotesk, sans-serif" font-weight="700" font-size="28" fill="#FFFFFF">Preference Study</text>
+            <text x="40" y="300" font-family="IBM Plex Mono, monospace" font-size="13" fill="#8FD9C6">4 behavioral clusters · 1.2K users</text>
+          </svg>
+        </div>
+        <div class="proj-body">
         <div class="proj-top"><span class="proj-tag">Segmentation</span><span class="proj-date">Feb 2026</span></div>
         <h4>A Study of Smartphone Preferences</h4>
         <p>Behavioral modeling of smartphone choice across 1,200 users using classification and unsupervised segmentation, uncovering four distinct behavioral clusters.</p>
@@ -510,9 +561,27 @@
         </div>
         <div class="proj-stack"><span>Python</span><span>K-Means</span><span>Scikit-Learn</span></div>
         <a class="proj-link" href="https://myracorreia05.github.io/smartphone_analysis/" target="_blank" rel="noopener">Examine the project <span class="arrow">↗</span></a>
+        </div>
       </div>
 
-      <div class="proj-card">
+      <div class="proj-card" data-cat="viz">
+        <div class="proj-banner">
+          <svg viewBox="0 0 600 344" xmlns="http://www.w3.org/2000/svg">
+            <rect width="600" height="344" fill="#1A1520"/>
+            <ellipse cx="300" cy="160" rx="220" ry="120" fill="none" stroke="#8B6FE8" stroke-width="1.5" opacity="0.4"/>
+            <circle cx="180" cy="120" r="10" fill="#E8B84B"/>
+            <circle cx="260" cy="180" r="16" fill="#8B6FE8"/>
+            <circle cx="360" cy="110" r="7" fill="#4C7EF0"/>
+            <circle cx="420" cy="200" r="13" fill="#E86B4B"/>
+            <circle cx="150" cy="220" r="9" fill="#1D9A80"/>
+            <circle cx="320" cy="230" r="11" fill="#E8B84B"/>
+            <circle cx="450" cy="140" r="8" fill="#8FD9C6"/>
+            <text x="40" y="60" font-family="Space Grotesk, sans-serif" font-weight="700" font-size="30" fill="#FFFFFF">PROOF</text>
+            <text x="40" y="88" font-family="Space Grotesk, sans-serif" font-weight="500" font-size="17" fill="#C9C2E0">A Global Alcohol Atlas</text>
+            <text x="40" y="300" font-family="IBM Plex Mono, monospace" font-size="13" fill="#8B6FE8">193 countries · WHO data · D3.js</text>
+          </svg>
+        </div>
+        <div class="proj-body">
         <div class="proj-top"><span class="proj-tag">Data Journalism · D3</span><span class="proj-date">Jan 2026</span></div>
         <h4>PROOF — A Global Alcohol Atlas</h4>
         <p>Interactive dashboard visualizing WHO alcohol consumption data across 193 countries — choropleth maps, animated bubble charts, stacked histograms, all hand-coded in vanilla D3.</p>
@@ -523,9 +592,27 @@
         </div>
         <div class="proj-stack"><span>D3.js</span><span>TopoJSON</span><span>Vanilla JS</span></div>
         <a class="proj-link" href="https://myracorreia05.github.io/Global-Alcohol-Consumption-Data-Dashboard/" target="_blank" rel="noopener">Examine the project <span class="arrow">↗</span></a>
+        </div>
       </div>
 
-      <div class="proj-card">
+      <div class="proj-card" data-cat="viz">
+        <div class="proj-banner">
+          <svg viewBox="0 0 600 344" xmlns="http://www.w3.org/2000/svg">
+            <rect width="600" height="344" fill="#0F1D14"/>
+            <rect x="60" y="240" width="30" height="60" fill="#E8842B"/>
+            <rect x="110" y="200" width="30" height="100" fill="#F0A93D"/>
+            <rect x="160" y="150" width="30" height="150" fill="#1D9A80"/>
+            <rect x="210" y="180" width="30" height="120" fill="#F0A93D"/>
+            <rect x="260" y="120" width="30" height="180" fill="#1D9A80"/>
+            <rect x="310" y="210" width="30" height="90" fill="#E8842B"/>
+            <path d="M60 240 L110 200 L160 150 L210 180 L260 120 L310 210" stroke="#FFFFFF" stroke-width="2" fill="none" opacity="0.5"/>
+            <text x="380" y="80" font-family="Space Grotesk, sans-serif" font-weight="700" font-size="26" fill="#FFFFFF">India</text>
+            <text x="380" y="110" font-family="Space Grotesk, sans-serif" font-weight="700" font-size="26" fill="#FFFFFF">Literacy</text>
+            <text x="380" y="140" font-family="Space Grotesk, sans-serif" font-weight="700" font-size="26" fill="#FFFFFF">Intelligence</text>
+            <text x="60" y="320" font-family="IBM Plex Mono, monospace" font-size="13" fill="#8FD9C6">28 states · Census 2001–2011</text>
+          </svg>
+        </div>
+        <div class="proj-body">
         <div class="proj-top"><span class="proj-tag">Civic Tech</span><span class="proj-date">Census 2001–2011</span></div>
         <h4>India Literacy Intelligence</h4>
         <p>A conversation with a friend became a dashboard — state-level literacy across the 2001 and 2011 Census. Six chart types hand-built from scratch, covering 28 states.</p>
@@ -536,9 +623,34 @@
         </div>
         <div class="proj-stack"><span>Vanilla JS</span><span>Chart.js</span><span>Census Data</span></div>
         <a class="proj-link" href="https://myracorreia05.github.io/India-Literacy-Intelligence/" target="_blank" rel="noopener">Examine the project <span class="arrow">↗</span></a>
+        </div>
       </div>
 
-      <div class="proj-card">
+      <div class="proj-card" data-cat="biz">
+        <div class="proj-banner">
+          <svg viewBox="0 0 600 344" xmlns="http://www.w3.org/2000/svg">
+            <rect width="600" height="344" fill="#1C0F10"/>
+            <circle cx="300" cy="160" r="90" fill="none" stroke="#E63946" stroke-width="1.5" opacity="0.5"/>
+            <circle cx="300" cy="160" r="55" fill="none" stroke="#E63946" stroke-width="1.5" opacity="0.5"/>
+            <circle cx="300" cy="160" r="8" fill="#E63946"/>
+            <circle cx="210" cy="110" r="9" fill="#F0A93D"/>
+            <circle cx="390" cy="110" r="9" fill="#F0A93D"/>
+            <circle cx="210" cy="210" r="9" fill="#F0A93D"/>
+            <circle cx="390" cy="210" r="9" fill="#F0A93D"/>
+            <circle cx="300" cy="70" r="9" fill="#F0A93D"/>
+            <circle cx="300" cy="250" r="9" fill="#F0A93D"/>
+            <line x1="300" y1="160" x2="210" y2="110" stroke="#8A4A4A" stroke-width="1"/>
+            <line x1="300" y1="160" x2="390" y2="110" stroke="#8A4A4A" stroke-width="1"/>
+            <line x1="300" y1="160" x2="210" y2="210" stroke="#8A4A4A" stroke-width="1"/>
+            <line x1="300" y1="160" x2="390" y2="210" stroke="#8A4A4A" stroke-width="1"/>
+            <line x1="300" y1="160" x2="300" y2="70" stroke="#8A4A4A" stroke-width="1"/>
+            <line x1="300" y1="160" x2="300" y2="250" stroke="#8A4A4A" stroke-width="1"/>
+            <text x="40" y="55" font-family="Space Grotesk, sans-serif" font-weight="700" font-size="24" fill="#FFFFFF">Coca-Cola Supply</text>
+            <text x="40" y="82" font-family="Space Grotesk, sans-serif" font-weight="700" font-size="24" fill="#FFFFFF">Chain Intelligence</text>
+            <text x="40" y="300" font-family="IBM Plex Mono, monospace" font-size="13" fill="#F0A93D">6 hubs · 250K fleet · SEC 10-K</text>
+          </svg>
+        </div>
+        <div class="proj-body">
         <div class="proj-top"><span class="proj-tag">Supply Chain · SCM 701</span><span class="proj-date">Mar–Apr 2026</span></div>
         <h4>The Coca-Cola Supply Chain Dashboard</h4>
         <p>A Whitman SCM 701 final project that grew into a full interactive dashboard — risk pooling across six regional hubs, dynamic pricing, and a 250,000-vehicle fleet, sourced from public SEC 10-K filings.</p>
@@ -549,9 +661,22 @@
         </div>
         <div class="proj-stack"><span>Vanilla JS</span><span>SEC 10-K</span><span>Logistics</span></div>
         <a class="proj-link" href="https://myracorreia05.github.io/Coca-Cola-Supply-Chain-Intelligence-/" target="_blank" rel="noopener">Examine the project <span class="arrow">↗</span></a>
+        </div>
       </div>
 
-      <div class="proj-card">
+      <div class="proj-card" data-cat="sports">
+        <div class="proj-banner">
+          <svg viewBox="0 0 600 344" xmlns="http://www.w3.org/2000/svg">
+            <rect width="600" height="344" fill="#0D1B2A"/>
+            <circle cx="300" cy="150" r="60" fill="none" stroke="#FFFFFF" stroke-width="2" opacity="0.85"/>
+            <path d="M300 90 L318 140 L272 110 L328 110 L282 140 Z" fill="#FFFFFF" opacity="0.9"/>
+            <path d="M255 100 L300 90 L345 100 L340 160 L300 200 L260 160 Z" fill="none" stroke="#4C9EF0" stroke-width="2" opacity="0.6"/>
+            <text x="40" y="60" font-family="Space Grotesk, sans-serif" font-weight="700" font-size="26" fill="#FFFFFF">FIFA World Cup</text>
+            <text x="40" y="88" font-family="Space Grotesk, sans-serif" font-weight="700" font-size="26" fill="#FFFFFF">2026 Intelligence Hub</text>
+            <text x="40" y="300" font-family="IBM Plex Mono, monospace" font-size="13" fill="#4C9EF0">48 teams · 12 groups · live charts</text>
+          </svg>
+        </div>
+        <div class="proj-body">
         <div class="proj-top"><span class="proj-tag">Sports Analytics · Live</span><span class="proj-date">2026</span></div>
         <h4>FIFA World Cup 2026 Intelligence Hub</h4>
         <p>A fully interactive World Cup analytics hub — a Live Hub with 5 Chart.js visualizations, Group Standings for all 12 groups, and Player Intel profiling key performers.</p>
@@ -562,6 +687,7 @@
         </div>
         <div class="proj-stack"><span>Vanilla JS</span><span>Chart.js</span><span>HTML/CSS</span></div>
         <a class="proj-link" href="https://myracorreia05.github.io/FIFA-World-Cup-2026-Intelligence-Hub-" target="_blank" rel="noopener">Examine the project <span class="arrow">↗</span></a>
+        </div>
       </div>
 
     </div>
@@ -676,26 +802,104 @@
 
   function renderCerts(filter){
     const list = document.getElementById('certList');
-    list.innerHTML = '';
-    certs.filter(c => filter === 'all' || c.cat === filter).forEach(c => {
+    const rows = certs.filter(c => filter === 'all' || c.cat === filter).map((c, i) => {
       const row = document.createElement('div');
       row.className = 'cert-row';
+      row.style.animationDelay = (i * 25) + 'ms';
       row.innerHTML = `
         <div class="cr-name">${c.name}</div>
         <div class="cr-issuer">${c.issuer}</div>
         <div class="cr-date">${c.date}</div>
         ${c.link ? `<a class="cr-link" href="${c.link}" target="_blank" rel="noopener">Verify ↗</a>` : '<span class="cr-link" style="color:var(--ink-faint)">—</span>'}
       `;
-      list.appendChild(row);
+      return row;
     });
+
+    list.style.transition = 'opacity .15s ease';
+    list.style.opacity = '0';
+
+    setTimeout(() => {
+      list.innerHTML = '';
+      const frag = document.createDocumentFragment();
+      rows.forEach(row => frag.appendChild(row));
+      list.appendChild(frag);
+      list.style.opacity = '1';
+    }, 140);
   }
   renderCerts('all');
 
-  document.querySelectorAll('.filter-btn').forEach(btn => {
+  document.querySelector('#certifications .cert-filter').querySelectorAll('.filter-btn').forEach(btn => {
     btn.addEventListener('click', () => {
-      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      document.querySelector('#certifications .cert-filter').querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
       renderCerts(btn.dataset.f);
+    });
+  });
+
+  // Project filter (FLIP: batched reads/writes to avoid layout thrashing)
+  const projFilter = document.getElementById('projFilter');
+  function applyProjectFilter(f){
+    const cards = Array.from(document.querySelectorAll('#projects .proj-card'));
+    const isShown = card => f === 'all' || card.dataset.cat === f;
+
+    // READ (batch 1): current positions of everything
+    const firstRects = new Map();
+    cards.forEach(c => firstRects.set(c, c.getBoundingClientRect()));
+
+    const leaving = cards.filter(c => !isShown(c) && c.style.display !== 'none');
+    leaving.forEach(c => c.classList.add('hide'));
+
+    const settle = () => {
+      // WRITE (batch): toggle display for all cards
+      cards.forEach(card => { card.style.display = isShown(card) ? '' : 'none'; });
+
+      // single forced reflow to flush the writes above
+      void document.body.offsetHeight;
+
+      // READ (batch 2): new positions for visible cards
+      const lastRects = new Map();
+      cards.forEach(card => { if (isShown(card)) lastRects.set(card, card.getBoundingClientRect()); });
+
+      // WRITE (batch): set inverted transform, no transition yet
+      cards.forEach(card => {
+        if (!isShown(card)) return;
+        const first = firstRects.get(card);
+        const last = lastRects.get(card);
+        const dx = first.left - last.left;
+        const dy = first.top - last.top;
+        card.style.transition = 'none';
+        card.style.transform = (dx || dy) ? `translate(${dx}px, ${dy}px)` : '';
+        card.classList.remove('hide');
+      });
+
+      // single forced reflow to flush the inverted transforms
+      void document.body.offsetHeight;
+
+      // PLAY: animate to natural position on the next frame
+      requestAnimationFrame(() => {
+        cards.forEach(card => {
+          if (!isShown(card)) return;
+          card.style.transition = 'transform .4s cubic-bezier(.4,0,.2,1)';
+          card.style.transform = '';
+          card.addEventListener('transitionend', function cleanup(e){
+            if (e.propertyName === 'transform') {
+              card.style.transition = '';
+              card.removeEventListener('transitionend', cleanup);
+            }
+          });
+        });
+      });
+    };
+
+    if (leaving.length) setTimeout(settle, 280);
+    else settle();
+  }
+
+  projFilter.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      projFilter.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      applyProjectFilter(btn.dataset.f);
     });
   });
 </script>
