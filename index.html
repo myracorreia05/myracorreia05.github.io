@@ -554,14 +554,47 @@
     </div>
 
     <div class="cert-filter" id="projFilter">
-      <button class="filter-btn active" data-f="all">All · 6</button>
+      <button class="filter-btn active" data-f="all">All · 7</button>
       <button class="filter-btn" data-f="ml">Machine Learning · 2</button>
       <button class="filter-btn" data-f="viz">Data Viz · 2</button>
+      <button class="filter-btn" data-f="sql">SQL &amp; Data Cleaning · 1</button>
       <button class="filter-btn" data-f="biz">Business &amp; Supply Chain · 1</button>
       <button class="filter-btn" data-f="sports">Sports Analytics · 1</button>
     </div>
 
     <div class="proj-grid">
+
+      <div class="proj-card" data-cat="sql">
+        <div class="proj-banner">
+          <svg viewBox="0 0 600 344" xmlns="http://www.w3.org/2000/svg">
+            <rect width="600" height="344" fill="#0D1417"/>
+            <rect x="40" y="40" width="180" height="26" rx="4" fill="#1A2226"/>
+            <rect x="40" y="72" width="180" height="14" rx="3" fill="#233034"/>
+            <rect x="40" y="92" width="140" height="14" rx="3" fill="#233034"/>
+            <rect x="40" y="112" width="160" height="14" rx="3" fill="#233034"/>
+            <line x1="230" y1="230" x2="560" y2="230" stroke="#2A3A3E" stroke-width="1"/>
+            <line x1="230" y1="230" x2="230" y2="120" stroke="#2A3A3E" stroke-width="1"/>
+            <polyline points="230,210 270,205 310,195 350,190 390,170 430,120 470,200 510,195" fill="none" stroke="#1D9A80" stroke-width="2.5"/>
+            <circle cx="430" cy="120" r="5" fill="#E8B84B"/>
+            <text x="430" y="105" font-family="IBM Plex Mono, monospace" font-size="12" fill="#E8B84B" text-anchor="middle">84,714</text>
+            <text x="40" y="165" font-family="Space Grotesk, sans-serif" font-weight="700" font-size="24" fill="#FFFFFF">Global Tech</text>
+            <text x="40" y="192" font-family="Space Grotesk, sans-serif" font-weight="700" font-size="24" fill="#FFFFFF">Layoffs, Cleaned</text>
+            <text x="40" y="300" font-family="IBM Plex Mono, monospace" font-size="13" fill="#8FD9C6">2,361 rows · SQLite · window functions</text>
+          </svg>
+        </div>
+        <div class="proj-body">
+        <div class="proj-top"><span class="proj-tag">SQL Case Study</span><span class="proj-date">2026</span></div>
+        <h4>Global Tech Layoffs, Cleaned</h4>
+        <p>A messy 2,361-row public dataset on tech layoffs, cleaned and queried in SQLite. Removed duplicates, standardized inconsistent labels, and used a SQL window function to uncover the real peak — January 2023 — three months after most coverage had moved on.</p>
+        <div class="proj-stats">
+          <div><span class="n">2,361</span><span class="l">Raw Records</span></div>
+          <div><span class="n">84.7K</span><span class="l">Jan '23 Peak</span></div>
+          <div><span class="n">5</span><span class="l">Dupes Removed</span></div>
+        </div>
+        <div class="proj-stack"><span>SQLite</span><span>SQL</span><span>Python / pandas</span></div>
+        <a class="proj-link" href="https://myracorreia05.github.io/tech-layoffs-data/" target="_blank" rel="noopener">Examine the project <span class="arrow">↗</span></a>
+        </div>
+      </div>
 
       <div class="proj-card featured" data-cat="ml">
         <div class="proj-banner">
